@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Información de Registro Estudiante";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="alert alert-info" role="alert">
+    <h4 class="alert-info">Formato de archivo de Excel</h4>
+    <p>
+        Para que el sistema puede leer el documento Excel debe poseer el siguiente formato:
+        <br />
+        <br />
+        <img src="~/images/FormatoExcelRegistroEstudiante.png" class="img-fluid" />
+        <br />
+        <br />
+        El sistema leerá los datos a partir de la celda B2 y seguira con las celdas consecutivas de la fila hasta llegar a la celda J2.
+        <br />
+        Posteriormente seguirá leyendo los registros de las siguientes filas empezando por la columna B hasta la columna J hasta que no hayan más filas.
+        <br />
+
+        Para que el sistema almacene información coherente y no presente mensajes de error las columnas deben poseer los siguiente datos:
+        <ul>
+            <li>La columna B: Posee los Nombres</li>
+            <li>La columna C: Posee las Cédulas (Solo números)</li>
+            <li>La columna D: Posee los Correos electrónicos</li>
+            <li>La columna E: Posee los Números Teléfonicos</li>
+            <li>La columna F: Posee los Géneros</li>
+            <li>La columna G: Posee los Centros Universitarios</li>
+            <li>La columna H: Posee los Grados Académicos</li>
+            <li>La columna I: Posee los Intereses de participar</li>
+            <li>La columna j: Posee las Condiciones</li>
+        </ul>
+        <br />
+        Tomar en cuenta que tener celdas vacias y con ciertos formatos puede ocasionar que el sistema no pueda leer el documento, por lo que se aconseja solo tener la información en celdas indicadas y sin formato.
+        <br />El tamaño del archivo Excel no debe exceder <b>30 MB</b>. 
+    </p>
+
+</div>
+
+<br /><br />
+<div class="form-group">
+    <a asp-controller="RegistroEstudiante" asp-action="Create" class="btn btn-success">Volver</a>
+</div>
+

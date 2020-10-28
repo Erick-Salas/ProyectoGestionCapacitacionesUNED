@@ -1,0 +1,70 @@
+﻿
+@model IEnumerable<ProyectoAppGestionCapacitacionesUNED.Models.EncuestaPersonalAdministrativo>
+@{
+    ViewData["Title"] = "Reporte Sugerencias de Personal Administrativo";
+    Layout = "~/Views/Shared/_Reporte.cshtml";
+}
+
+
+<br />
+
+@if (Model.Any())
+{
+
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>
+                Nombre de la capacitación: @Model.First().CapacitacionPersonalAdministrativo.NombreCapacitacion
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Código: @Model.First().CapacitacionPersonalAdministrativo.Codigo
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Instructor: @Model.First().CapacitacionPersonalAdministrativo.NombreInstructor
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Fecha de la capacitación: @Model.First().CapacitacionPersonalAdministrativo.FechaCapacitacion.ToShortDateString()
+            </th>
+        </tr>
+    </table>
+
+
+    <table class="table table-striped table-bordered" id="tb">
+
+        <tr>
+
+            <th>Sugerencias</th>
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            if (item.Pregunta10 != "")
+            {
+
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(m => item.Pregunta10)
+                    </td>
+
+                </tr>
+            }
+
+        }
+
+
+
+    </table>
+
+}
+

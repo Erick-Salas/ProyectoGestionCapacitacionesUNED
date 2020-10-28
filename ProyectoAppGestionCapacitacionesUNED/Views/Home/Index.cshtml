@@ -1,0 +1,73 @@
+﻿
+@using ProyectoAppGestionCapacitacionesUNED.Helpers
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<br />
+
+@if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Executive))
+{
+
+
+    <div class="row justify-content-center">
+
+        <div class="card-group" rold="group">
+
+            <div class="card shadow" style="width: 18rem;">
+                <div class="card-header">
+                    <h5 class="card-title font-weight-bold">Capacitación de Estudiantes</h5>
+                </div>
+                <div class="card-body text-center">
+
+                    <a asp-controller="Home" asp-action="MenuEstudiante" class="btn btn-outline-primary btn-sm">Ir a capacitación</a>
+                </div>
+            </div>
+
+
+
+            <div class="card shadow" style="width: 18rem;">
+                <div class="card-header">
+                    <h5 class="card-title font-weight-bold ">Capacitación de Personal Académico</h5>
+                </div>
+                <div class="card-body text-center">
+
+                    <a asp-controller="Home" asp-action="MenuPersonalAcademico" class="btn btn-outline-primary btn-sm">Ir a capacitación</a>
+                </div>
+            </div>
+
+
+
+            <div class="card shadow" style="width: 18rem;">
+                <div class="card-header">
+                    <h5 class="card-title font-weight-bold">Capacitación de Personal Administrativo</h5>
+                </div>
+                <div class="card-body text-center">
+
+                    <a asp-controller="Home" asp-action="MenuPersonalAdministrativo" class="btn btn-outline-primary btn-sm">Ir a capacitación</a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+}
+else
+{
+
+    <br />
+
+    <div class="card text-center">
+
+        <div class="card-body">
+            <i class="fas fa-spinner"></i>
+        </div>
+        <div class="card-footer text-muted">
+            <p>Inicie sesión para acceder</p>
+        </div>
+
+    </div>
+
+
+}

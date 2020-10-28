@@ -1,0 +1,10 @@
+﻿
+@model int
+
+<td class="text-right">
+    <div class="btn-group" rold="group">
+        <form method="post" action="Delete">
+            <button onclick="if (!confirm('¿Está seguro que desea eliminar la capacitación?')){return false}" type="submit" class="btn btn-danger rounded-0" asp-action="Delete" asp-route-id="@Model"><i class="far fa-trash-alt"></i></button>
+        </form>
+    </div>
+</td>

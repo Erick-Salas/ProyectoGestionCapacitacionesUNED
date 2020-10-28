@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Información Encuesta Estudiante";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="alert alert-info" role="alert">
+    <h4 class="alert-info">Formato de archivo de Excel</h4>
+    <p>
+        Para que el sistema puede leer el documento Excel debe poseer el siguiente formato:
+        <br />
+        <br />
+        <img src="~/images/FormatoExcelEncuesta.png" class="img-fluid" />
+        <br />
+        <br />
+        El sistema leerá los datos a partir de la celda J2 y seguira con las celdas consecutivas de la fila hasta llegar a la celda S2.
+        <br />
+        Posteriormente seguirá leyendo los registros de las siguientes filas empezando por la columna J hasta la columna S hasta que no hayan más filas.
+        <br />
+
+        Para que el sistema almacene información coherente y no presente mensajes de error las columnas deben poseer los siguiente datos:
+        <ul>
+            <li>La columna J: Posee los datos de la pregunta ¿Cómo califica la competencia técnica y profesional del Expositor?</li>
+            <li>La columna K: Posee los datos de la pregunta ¿Cómo califica la disposición de resolver consultas y dudas del Expositor?</li>
+            <li>La columna L: Posee los datos de la pregunta ¿Cómo califica los recursos didácticos y multimedios que utilizo el Expositor?</li>
+            <li>La columna M: Posee los datos de la pregunta ¿Considera usted que fueron claros los materiales presentados durante la exposición?</li>
+            <li>La columna N: Posee los datos de la pregunta ¿Considera que el espacio físico en el que se desarrolló el taller fue apropiado?</li>
+            <li>La columna O: Posee los datos de la pregunta ¿Puede aplicar lo aprendido en este taller al ejercicio profesional?</li>
+            <li>La columna P: Posee los datos de la pregunta Evalúese a usted mismo en el grado de motivación e interés personal para atender y seguir la clase y sus actividades</li>
+            <li>La columna Q: Posee los datos de la pregunta Indique la calificación, en general, que usted asignaría al taller</li>
+            <li>La columna R: Posee los datos de la pregunta ¿Cree que el Programa de Ingeniería Informática debe de seguir realizando talleres teóricos y prácticos presenciales, como este, en el futuro?</li>
+            <li>La columna S: Posee los datos de la pregunta sugerencias o comentarios para el mejoramiento de las próximas actividades de capacitación (opcional)</li>
+        </ul>
+        <br />
+        Tomar en cuenta que tener ciertas celdas vacias y con ciertos formatos puede ocasionar que el sistema no pueda leer el documento, por lo que se aconseja solo tener la información en celdas indicadas y sin formato.
+        <br />El tamaño del archivo Excel no debe exceder <b>30 MB</b>.
+    </p>
+
+</div>
+
+<br /><br />
+<div class="form-group">
+    <a asp-controller="EncuestaEstudiante" asp-action="Create" class="btn btn-success">Volver</a>
+</div>
+

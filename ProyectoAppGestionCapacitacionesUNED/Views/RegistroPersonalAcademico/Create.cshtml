@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Crear Registro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<div class="row">
+    <h2 class="text-info">Registrar Personal Académico</h2>
+</div>
+<br />
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <h5 class="font-weight-bold">Código de capacitación asignado a personal académico: </h5>
+        </div>
+        <div class="col-auto">
+            <input type="text" name="searchCodeE" value="@ViewBag.CurrentFilter" />
+
+        </div>
+        <div class="col-auto">
+            <input type="file" name="files" class="form-control" />
+
+        </div>
+
+    </div>
+
+    <div class="form-row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    </div>
+
+    <hr />
+    <div class="form-row">
+        <div class="col-8">
+            <input type="submit" class="btn btn-info" value="Crear Registro" />
+        </div>
+
+    </div>
+
+</form>
+
+<br /><br /><hr />
+<div class="form-group">
+
+    <a asp-controller="Home" asp-action="MenuPersonalAcademico" class="btn btn-success">Volver</a>
+    <a asp-controller="RegistroPersonalAcademico" asp-action="InformacionRegistroPersonalAcademico" class="btn btn-info"><i class="fas fa-info-circle"></i>&nbsp; Información</a>
+</div>
+
+

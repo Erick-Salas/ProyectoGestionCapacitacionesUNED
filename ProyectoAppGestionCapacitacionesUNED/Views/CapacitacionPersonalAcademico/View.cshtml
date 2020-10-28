@@ -1,0 +1,60 @@
+﻿
+@model ProyectoAppGestionCapacitacionesUNED.Models.CapacitacionPersonalAcademico
+@{
+    ViewData["Title"] = "Vista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<form>
+    <ul class="list-group col-6">
+        <li class="list-group-item active">Detalle</li>
+        <li class="list-group-item d-flex justify-content-between">
+            <label class="" asp-for="NombreCapacitacion"></label>
+            <input disabled="disabled" asp-for="NombreCapacitacion" />
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between">
+            <label class="" asp-for="Codigo"></label>
+            <input disabled="disabled" asp-for="Codigo" />
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <label class="" asp-for="FechaCapacitacion"></label>
+            <input disabled="disabled" value="@Model.FechaCapacitacion.ToShortDateString()" />
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <label class="" asp-for="Duracion"></label>
+            <input disabled="disabled" asp-for="Duracion" />
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <label class="" asp-for="Lugar"></label>
+            <input disabled="disabled" asp-for="Lugar" />
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <label class="" asp-for="HorarioInicio"></label>
+            <input disabled="disabled" asp-for="HorarioInicio" />
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <label class="" asp-for="HorarioSalida"></label>
+            <input disabled="disabled" asp-for="HorarioSalida" />
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <label class="" asp-for="Descripcion"></label>
+            <textarea disabled="disabled" asp-for="Descripcion"></textarea>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <label class="" asp-for="NombreInstructor"></label>
+            <input disabled="disabled" asp-for="NombreInstructor" />
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <label class="" asp-for="Dependencia"></label>
+            <input disabled="disabled" asp-for="Dependencia" />
+        </li>
+    </ul>
+
+
+    <br />
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-success">Volver</a>
+    </div>
+</form>
+

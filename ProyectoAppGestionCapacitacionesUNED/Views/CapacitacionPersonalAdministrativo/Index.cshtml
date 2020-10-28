@@ -1,0 +1,79 @@
+﻿
+@model cloudscribe.Pagination.Models.PagedResult<CapacitacionPersonalAdministrativo>
+
+@{
+    ViewData["Title"] = "Capacitación Personal Administrativo";
+    ViewData["Controller"] = "CapacitacionPersonalAdministrativo";
+    ViewData["Action"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+<form asp-action="Index" method="get">
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <h5 class="font-weight-bold">Buscar Código: </h5>
+        </div>
+        <div class="col-auto">
+            <input type="text" name="searchString" value="@ViewBag.CurrentFilter" />
+        </div>
+        <div class="col-auto">
+            <input type="submit" class="btn btn-info" value="Buscar" />
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-danger" asp-action="Index">Quitar Filtro</a>
+        </div>
+    </div>
+
+</form>
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Capacitación de Personal Administrativo</h2>
+    </div>
+
+
+    <div class="col-6 text-right">
+        <a class="btn btn-info" asp-action="Create"><i class="fas fa-chalkboard-teacher"></i> &nbsp; Agregar nueva capacitación</a>
+    </div>
+
+    <br />
+    <div class="col-12">
+        <table class="table table-striped border">
+            <tr class="table-info">
+                <th>Código</th>
+                <th>Nombre de Capacitación</th>
+                <th>Detalle</th>
+                <th>
+                    Eliminar
+                </th>
+
+            </tr>
+            @foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td><b>@Html.DisplayFor(m => item.Codigo)</b></td>
+
+                    <td>
+                        <b>@Html.DisplayFor(m => item.NombreCapacitacion)</b>
+
+                    </td>
+
+                    <partial name="_TableDetailButtonPartial" view-data="ViewData" model="item.Id" />
+
+
+                    <partial name="_TableDeleteButtonPartial" view-data="ViewData" model="item.Id" />
+
+                </tr>
+            }
+
+        </table>
+        <partial name="_PaginationPartial" model="Model" />
+    </div>
+</div>
+<br /><br />
+<div class="form-group">
+
+    <a asp-controller="Home" asp-action="MenuPersonalAdministrativo" class="btn btn-success">Volver</a>
+</div>
+

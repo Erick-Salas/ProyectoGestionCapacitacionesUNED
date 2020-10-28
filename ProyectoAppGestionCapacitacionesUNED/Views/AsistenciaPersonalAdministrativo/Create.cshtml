@@ -1,0 +1,171 @@
+﻿@model IEnumerable<ProyectoAppGestionCapacitacionesUNED.Models.RegistroPersonalAdministrativo>
+
+@{
+    ViewData["Title"] = "Crear Asistencia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Create" asp-controller="AsistenciaPersonalAdministrativo" method="post">
+    <br />
+    <div class="form-row">
+        <div class="col-6">
+            <h2 class="text-info">Registro de Asistencia de Personal Administrativo</h2>
+        </div>
+    </div>
+    <br />
+
+    <div class="form-row">
+        <div class="col-auto">
+            <h5 class="font-weight-bold">Código: </h5>
+        </div>
+        <div class="col-auto">
+            <input type="text" name="searchCodeA" value="@ViewBag.CurrentFilter" />
+
+        </div>
+        <div class="col-auto">
+            <input type="submit" class="btn btn-info" value="Buscar" />
+        </div>
+        <div class="col-auto">
+            <input type="button" class="btn btn-success" id="guardar" value="Guardar asistencia" onclick="tomarTabla();" />
+        </div>
+    </div>
+
+    <div class="form-row">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+</form>
+
+<br />
+
+<div class="col-12">
+    <table class="table table-striped border" id="tb">
+        <tr class="table-info align-content-between">
+            <th>Código de Capacitación</th>
+            <th>Nombre de Capacitación</th>
+            <th>Nombre</th>
+            <th>Cédula</th>
+            <th>Asistencia</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            @Html.HiddenFor(m => item.CapacitacionPersonalAdministrativoID)
+            @Html.HiddenFor(m => item.Id)
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.CapacitacionPersonalAdministrativo.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.CapacitacionPersonalAdministrativo.NombreCapacitacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Cedula)
+                </td>
+
+                <td>
+                    <input type="checkbox" class="larger" checked />
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+<hr />
+<div class="form-group">
+
+    <a asp-controller="Home" asp-action="MenuPersonalAdministrativo" class="btn btn-success">Volver</a>
+</div>
+
+
+
+<script>
+        var registros = [];
+
+
+    function tomarTabla() {
+        var table = document.getElementById("tb");
+        var inputs = table.getElementsByTagName("input");
+        var hidden = [];
+        var checkbox = [];
+        var idcapacitacion = [];
+        var idregistropersonal = [];
+        var registro = [];
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].getAttribute('type') == 'checkbox') {
+                checkbox.push(inputs[i]);
+            }
+
+        }
+
+        for (var y = 0; y < inputs.length; y++) {
+            if (inputs[y].getAttribute('type') == 'hidden') {
+                hidden.push(inputs[y]);
+            }
+        }
+
+        for (var z = 0; z < hidden.length; z++) {
+            if (z % 2 == 0) {
+                idcapacitacion.push(hidden[z]);
+            }
+            else {
+                idregistropersonal.push(hidden[z]);
+            }
+        }
+
+        for (var x = 0; x < checkbox.length; x++) {
+
+            var capacitacion;
+            var registropersonal;
+            var asistencia;
+
+            capacitacion = idcapacitacion[x].value;
+            registropersonal = idregistropersonal[x].value;
+
+            if (checkbox[x].checked) {
+                asistencia = true;
+            }
+            if (!checkbox[x].checked) {
+                asistencia = false;
+            }
+
+            registro = {
+                CapacitacionPersonalAdministrativoID: parseInt(capacitacion),
+                RegistroPersonalAdministrativoID : parseInt(registropersonal),
+                Asistencia : asistencia
+            };
+
+            registros.push(registro);
+
+        }
+
+            $.ajax({
+                url: '/AsistenciaPersonalAdministrativo/Action',
+                type: 'POST',
+
+                data: {
+                    AsistenciaPersonalAdministrativo: registros
+                },
+
+                success: function (data) {
+                    window.location.replace(data.newUrl);
+
+                },
+                error: function () {
+                    alert("Debe buscar un código");
+                },
+
+            });
+
+    }
+
+
+
+</script>
+

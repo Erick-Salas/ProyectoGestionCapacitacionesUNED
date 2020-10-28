@@ -1,0 +1,70 @@
+﻿
+
+@model IEnumerable<ProyectoAppGestionCapacitacionesUNED.Models.AsistenciaPersonalAcademico>
+@{
+    ViewData["Title"] = "Reporte Asistencia de Personal Académico";
+    Layout = "~/Views/Shared/_Reporte.cshtml";
+}
+
+@if (Model.Any())
+{
+
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>
+                Nombre de la capacitación: @Model.First().CapacitacionPersonalAcademico.NombreCapacitacion
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Código: @Model.First().CapacitacionPersonalAcademico.Codigo
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Instructor: @Model.First().CapacitacionPersonalAcademico.NombreInstructor
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Fecha de la capacitación: @Model.First().CapacitacionPersonalAcademico.FechaCapacitacion.ToShortDateString()
+            </th>
+        </tr>
+    </table>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered" id="tb">
+
+            <tr>
+
+                <th>Nombre</th>
+                <th>Cédula</th>
+
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(m => item.RegistroPersonalAcademico.NombreCompleto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.RegistroPersonalAcademico.Cedula)
+                    </td>
+
+                </tr>
+
+            }
+
+            <tr>
+                <th>Cantidad de participantes @Model.Count()</th>
+            </tr>
+
+        </table>
+    </div>
+}
+

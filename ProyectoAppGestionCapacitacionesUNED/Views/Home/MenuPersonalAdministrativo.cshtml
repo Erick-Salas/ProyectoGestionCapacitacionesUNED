@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Menú Personal Administrativo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<div class="list-group">
+    <div class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Menú Capacitación de Personal Administrativo</h5>
+        </div>
+        <br />
+        <div class="btn-group">
+            <a asp-controller="CapacitacionPersonalAdministrativo" asp-action="Index" class="btn btn-success">Capacitación de Personal Administrativo</a>
+            <a asp-controller="RegistroPersonalAdministrativo" asp-action="Create" class="btn btn-success">Registro de Personal Administrativo</a>
+            <a asp-controller="AsistenciaPersonalAdministrativo" asp-action="Create" class="btn btn-success">Asistencia de Personal Administrativo</a>
+            <a asp-controller="EncuestaPersonalAdministrativo" asp-action="Create" class="btn btn-success">Encuesta de Personal Administrativo</a>
+        </div>
+    </div>
+
+
+</div>
+
+<br />
+
+<div class="list-group">
+    <div class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Reportes</h5>
+        </div>
+        <br />
+        <div class="btn-group">
+            <a asp-controller="ReportesPersonalAdministrativo" asp-action="ReporteAsistencia" class="btn btn-success">Reporte de asistencia</a>
+            <a asp-controller="ReportesPersonalAdministrativo" asp-action="ReporteGenero" class="btn btn-success">Reporte de género</a>
+            <a asp-controller="ReportesPersonalAdministrativo" asp-action="ReporteDependencia" class="btn btn-success">Reporte de dependencia</a>
+            <a asp-controller="ReportesPersonalAdministrativo" asp-action="ReporteGradoAcademico" class="btn btn-success">Reporte de grado académico</a>
+            <a asp-controller="ReportesPersonalAdministrativo" asp-action="ReporteGradoSatisfaccion" class="btn btn-success">Reporte de grado de satisfacción</a>
+            <a asp-controller="ReportesPersonalAdministrativo" asp-action="ReporteSugerencias" class="btn btn-success">Reporte de sugerencias</a>
+        </div>
+    </div>
+
+
+</div>
+<br /><br />
+<div class="form-group">
+
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Volver</a>
+</div>
+

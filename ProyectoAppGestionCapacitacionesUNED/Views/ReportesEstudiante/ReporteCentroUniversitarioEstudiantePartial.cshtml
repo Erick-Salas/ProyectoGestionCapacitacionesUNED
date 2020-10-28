@@ -1,0 +1,111 @@
+﻿
+@model List<ProyectoAppGestionCapacitacionesUNED.Models.AsistenciaEstudiante>
+@{
+    ViewData["Title"] = "Reporte Centro Universitario de Estudiante";
+    Layout = "~/Views/Shared/_Reporte.cshtml";
+}
+
+@if (Model.Any())
+{
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>
+                Nombre de la capacitación: @Model.First().CapacitacionEstudiante.NombreCapacitacion
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Código: @Model.First().CapacitacionEstudiante.Codigo
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Instructor: @Model.First().CapacitacionEstudiante.NombreInstructor
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Fecha de la capacitación: @Model.First().CapacitacionEstudiante.FechaCapacitacion.ToShortDateString()
+            </th>
+        </tr>
+    </table>
+
+
+    var grupo = new List<string>();
+
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        var registro = Model[i].RegistroEstudiante.CentroUniversitario.ToString();
+        grupo.Add(registro);
+    }
+
+    var repetidos = grupo.GroupBy(x => x)
+                        .Where(g => g.Count() > 1)
+                        .Select(g => g.Key)
+                        .ToList();
+
+    var resultado = new List<string>();
+
+    if (repetidos.Any())
+    {
+        var norepetidos = grupo.Except(repetidos).ToList();
+        resultado = norepetidos.Concat(repetidos).ToList();
+
+    }
+    else
+    {
+        resultado = grupo;
+    }
+
+
+    @for (int i = 0; i < resultado.Count(); i++)
+    {
+
+        var contador = 0;
+
+
+        <table class="table table-striped table-bordered" id="tb">
+            <tr>
+                <th>Centro Universitario @resultado[i]</th>
+            </tr>
+            <tr>
+
+                <th>Nombre</th>
+                <th>Cédula</th>
+
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                if (item.RegistroEstudiante.CentroUniversitario == resultado[i])
+                {
+
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(m => item.RegistroEstudiante.NombreCompleto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.RegistroEstudiante.Cedula)
+                        </td>
+
+                    </tr>
+                    contador++;
+                }
+
+
+            }
+
+            <tr>
+                <th>Cantidad de personas de Centro Universitario @resultado[i] son: @contador</th>
+            </tr>
+
+        </table>
+
+    }
+
+
+}
+

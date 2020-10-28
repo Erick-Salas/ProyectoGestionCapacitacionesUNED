@@ -1,0 +1,117 @@
+﻿
+@model ProyectoAppGestionCapacitacionesUNED.Models.CapacitacionEstudiante
+@{
+    ViewData["Title"] = "Crear Capacitación";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<h2 class="text-info">Agregar Capacitación de Estudiante</h2>
+<br />
+<form method="post" action="Create">
+    <div class="form-row">
+        <div class="col">
+            <label asp-for="Codigo"></label>
+
+
+            <input asp-for="Codigo" class="form-control" />
+            <span asp-validation-for="Codigo" class="text-danger"></span>
+        </div>
+        <div class="col">
+
+            <label asp-for="NombreCapacitacion"></label>
+
+
+            <input asp-for="NombreCapacitacion" class="form-control" />
+            <span asp-validation-for="NombreCapacitacion" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <div class="form-row">
+        <div class="col">
+            <label asp-for="FechaCapacitacion"></label>
+
+
+            <input asp-for="FechaCapacitacion" class="form-control" />
+            <span asp-validation-for="FechaCapacitacion" class="text-danger"></span>
+        </div>
+        <div class="col">
+
+            <label asp-for="Duracion"></label>
+
+
+            <input asp-for="Duracion" class="form-control" />
+            <span asp-validation-for="Duracion" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <div class="form-row">
+        <div class="col">
+            <label asp-for="Lugar"></label>
+
+
+            <input asp-for="Lugar" class="form-control" />
+            <span asp-validation-for="Lugar" class="text-danger"></span>
+
+        </div>
+        <div class="col">
+
+            <label asp-for="HorarioInicio"></label>
+
+
+            <input asp-for="HorarioInicio" class="form-control" />
+            <span asp-validation-for="HorarioInicio" class="text-danger"></span>
+
+        </div>
+    </div>
+    <br />
+    <div class="form-row">
+        <div class="col">
+            <label asp-for="HorarioSalida"></label>
+
+
+            <input asp-for="HorarioSalida" class="form-control" />
+            <span asp-validation-for="HorarioSalida" class="text-danger"></span>
+
+        </div>
+        <div class="col">
+
+            <label asp-for="Descripcion"></label>
+
+
+            <textarea asp-for="Descripcion" class="form-control"></textarea>
+            <span asp-validation-for="Descripcion" class="text-danger"></span>
+
+        </div>
+    </div>
+    <br />
+    <div class="form-row">
+        <div class="col">
+            <label asp-for="NombreInstructor"></label>
+
+
+            <input asp-for="NombreInstructor" class="form-control" />
+            <span asp-validation-for="NombreInstructor" class="text-danger"></span>
+
+        </div>
+        <div class="col">
+
+            <label asp-for="Catedra"></label>
+
+
+            <input asp-for="Catedra" class="form-control" />
+            <span asp-validation-for="Catedra" class="text-danger"></span>
+
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Crear" />
+        <a asp-action="Index" class="btn btn-success">Volver</a>
+    </div>
+
+
+</form>
+
