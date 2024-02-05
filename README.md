@@ -22,5 +22,5 @@ Por medio de un módulo de encuestas que permite subir un documento Excel con da
 una serie de estadísticas correspondientes a la capacitación.
 
 Este proyecto tiene la funcionabilidad de convertir reportes mostrados en pantalla a formato PDF y también posee la funcionabilidad de autenticación por roles de forma que personas con el rol de administrador puede agregar personas
-para que puedan ingresar y las que tienen rol normal solo pueden ingresar a la página, la contraseña puede ser cambiada cuando el usuario lo desee.
+para que puedan ingresar y las que tienen rol normal solo pueden ingresar a la página, y un módulo de configuración de usuario donde la contraseña puede ser cambiada cuando el usuario lo desee.
 
